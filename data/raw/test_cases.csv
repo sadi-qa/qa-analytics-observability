@@ -1,0 +1,73 @@
+test_case_id,test_name,module,test_type,priority,automation_eligible,is_automated,owner_team,created_date
+TC-001,Authentication Functional scenario 01,Authentication,Functional,Medium,True,True,QA Automation,2025-08-27
+TC-002,Product Catalog Regression scenario 02,Product Catalog,Regression,High,True,True,QA Automation,2025-11-17
+TC-003,Cart Smoke scenario 03,Cart,Smoke,Critical,True,True,QA Automation,2025-08-25
+TC-004,Checkout Integration scenario 04,Checkout,Integration,High,True,True,QA Automation,2025-12-31
+TC-005,Payment API scenario 05,Payment,API,Medium,True,True,QA Automation,2025-11-28
+TC-006,User Account End-to-End scenario 06,User Account,End-to-End,High,True,True,QA Automation,2025-08-10
+TC-007,Authentication Security scenario 07,Authentication,Security,Medium,True,True,QA Automation,2025-09-25
+TC-008,Product Catalog Usability scenario 08,Product Catalog,Usability,High,False,False,Quality Engineering,2025-07-25
+TC-009,Cart Functional scenario 09,Cart,Functional,High,True,True,QA Automation,2025-07-12
+TC-010,Checkout Regression scenario 10,Checkout,Regression,Medium,True,False,Quality Engineering,2025-07-21
+TC-011,Payment Smoke scenario 11,Payment,Smoke,Medium,True,True,QA Automation,2025-10-01
+TC-012,User Account Integration scenario 12,User Account,Integration,Medium,True,True,QA Automation,2025-08-28
+TC-013,Authentication API scenario 13,Authentication,API,Medium,False,False,QA Functional,2025-07-26
+TC-014,Product Catalog End-to-End scenario 14,Product Catalog,End-to-End,High,True,False,QA Functional,2025-10-03
+TC-015,Cart Security scenario 15,Cart,Security,High,True,True,QA Automation,2025-12-22
+TC-016,Checkout Usability scenario 16,Checkout,Usability,Medium,False,False,QA Functional,2025-11-14
+TC-017,Payment Functional scenario 17,Payment,Functional,Medium,True,True,QA Automation,2025-12-11
+TC-018,User Account Regression scenario 18,User Account,Regression,Medium,True,True,QA Automation,2025-07-15
+TC-019,Authentication Smoke scenario 19,Authentication,Smoke,High,True,True,QA Automation,2025-09-07
+TC-020,Product Catalog Integration scenario 20,Product Catalog,Integration,Critical,False,False,Quality Engineering,2025-08-24
+TC-021,Cart API scenario 21,Cart,API,Medium,True,False,Quality Engineering,2025-08-06
+TC-022,Checkout End-to-End scenario 22,Checkout,End-to-End,High,True,True,QA Automation,2025-09-06
+TC-023,Payment Security scenario 23,Payment,Security,Medium,True,True,QA Automation,2025-10-01
+TC-024,User Account Usability scenario 24,User Account,Usability,High,False,False,QA Functional,2025-11-08
+TC-025,Authentication Functional scenario 25,Authentication,Functional,Medium,True,False,QA Functional,2025-12-08
+TC-026,Product Catalog Regression scenario 26,Product Catalog,Regression,High,True,True,QA Automation,2025-10-07
+TC-027,Cart Smoke scenario 27,Cart,Smoke,High,False,False,Quality Engineering,2025-11-19
+TC-028,Checkout Integration scenario 28,Checkout,Integration,Low,True,True,QA Automation,2025-12-22
+TC-029,Payment API scenario 29,Payment,API,Low,True,True,QA Automation,2025-09-26
+TC-030,User Account End-to-End scenario 30,User Account,End-to-End,High,True,True,QA Automation,2025-09-06
+TC-031,Authentication Security scenario 31,Authentication,Security,Low,True,True,QA Automation,2025-07-28
+TC-032,Product Catalog Usability scenario 32,Product Catalog,Usability,Low,False,False,Quality Engineering,2025-12-11
+TC-033,Cart Functional scenario 33,Cart,Functional,Medium,True,True,QA Automation,2025-08-11
+TC-034,Checkout Regression scenario 34,Checkout,Regression,Medium,True,True,QA Automation,2025-07-01
+TC-035,Payment Smoke scenario 35,Payment,Smoke,Medium,True,True,QA Automation,2025-10-01
+TC-036,User Account Integration scenario 36,User Account,Integration,Low,True,True,QA Automation,2025-07-15
+TC-037,Authentication API scenario 37,Authentication,API,High,True,True,QA Automation,2025-11-02
+TC-038,Product Catalog End-to-End scenario 38,Product Catalog,End-to-End,Medium,False,False,QA Functional,2025-08-02
+TC-039,Cart Security scenario 39,Cart,Security,Medium,False,False,QA Functional,2025-09-06
+TC-040,Checkout Usability scenario 40,Checkout,Usability,Medium,False,False,Quality Engineering,2025-08-24
+TC-041,Payment Functional scenario 41,Payment,Functional,Low,True,True,QA Automation,2025-12-30
+TC-042,User Account Regression scenario 42,User Account,Regression,High,False,False,Quality Engineering,2025-10-21
+TC-043,Authentication Smoke scenario 43,Authentication,Smoke,Low,True,True,QA Automation,2025-07-17
+TC-044,Product Catalog Integration scenario 44,Product Catalog,Integration,High,True,True,QA Automation,2025-08-26
+TC-045,Cart API scenario 45,Cart,API,Critical,True,True,QA Automation,2025-07-18
+TC-046,Checkout End-to-End scenario 46,Checkout,End-to-End,Low,True,True,QA Automation,2025-08-30
+TC-047,Payment Security scenario 47,Payment,Security,High,True,True,QA Automation,2025-11-24
+TC-048,User Account Usability scenario 48,User Account,Usability,Medium,False,False,QA Functional,2025-10-30
+TC-049,Authentication Functional scenario 49,Authentication,Functional,Medium,True,True,QA Automation,2025-10-19
+TC-050,Product Catalog Regression scenario 50,Product Catalog,Regression,High,True,False,QA Functional,2025-12-20
+TC-051,Cart Smoke scenario 51,Cart,Smoke,Medium,True,True,QA Automation,2025-09-25
+TC-052,Checkout Integration scenario 52,Checkout,Integration,Medium,True,True,QA Automation,2025-11-15
+TC-053,Payment API scenario 53,Payment,API,High,True,True,QA Automation,2025-09-02
+TC-054,User Account End-to-End scenario 54,User Account,End-to-End,Low,True,False,QA Functional,2025-07-13
+TC-055,Authentication Security scenario 55,Authentication,Security,Medium,True,True,QA Automation,2025-07-24
+TC-056,Product Catalog Usability scenario 56,Product Catalog,Usability,Low,False,False,QA Functional,2025-08-12
+TC-057,Cart Functional scenario 57,Cart,Functional,High,True,False,QA Functional,2025-08-12
+TC-058,Checkout Regression scenario 58,Checkout,Regression,High,False,False,Quality Engineering,2025-10-25
+TC-059,Payment Smoke scenario 59,Payment,Smoke,High,True,True,QA Automation,2025-11-20
+TC-060,User Account Integration scenario 60,User Account,Integration,Medium,True,True,QA Automation,2025-08-25
+TC-061,Authentication API scenario 61,Authentication,API,Low,True,True,QA Automation,2025-09-19
+TC-062,Product Catalog End-to-End scenario 62,Product Catalog,End-to-End,Critical,True,True,QA Automation,2025-11-13
+TC-063,Cart Security scenario 63,Cart,Security,High,False,False,QA Functional,2025-08-17
+TC-064,Checkout Usability scenario 64,Checkout,Usability,Critical,False,False,QA Functional,2025-12-20
+TC-065,Payment Functional scenario 65,Payment,Functional,Low,True,False,QA Functional,2025-11-26
+TC-066,User Account Regression scenario 66,User Account,Regression,Medium,True,True,QA Automation,2025-11-27
+TC-067,Authentication Smoke scenario 67,Authentication,Smoke,Medium,True,True,QA Automation,2025-12-19
+TC-068,Product Catalog Integration scenario 68,Product Catalog,Integration,Medium,True,True,QA Automation,2025-12-19
+TC-069,Cart API scenario 69,Cart,API,Medium,True,False,QA Functional,2025-07-03
+TC-070,Checkout End-to-End scenario 70,Checkout,End-to-End,Medium,False,False,QA Functional,2025-07-19
+TC-071,Payment Security scenario 71,Payment,Security,Medium,True,True,QA Automation,2025-09-28
+TC-072,User Account Usability scenario 72,User Account,Usability,Low,False,False,QA Functional,2025-10-03
