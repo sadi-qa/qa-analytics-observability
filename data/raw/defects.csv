@@ -1,0 +1,26 @@
+defect_id,release_id,linked_test_case_id,title,module,severity,status,detected_phase,created_date,resolved_date,is_reopened,root_cause
+BUG-001,REL-001,TC-011,Payment issue found during smoke testing,Payment,Medium,Open,QA,2026-01-08,,False,Third-Party Integration
+BUG-002,REL-001,TC-013,Authentication issue found during api testing,Authentication,High,Closed,QA,2026-01-19,2026-01-22,False,Configuration
+BUG-003,REL-001,TC-016,Checkout issue found during usability testing,Checkout,Medium,Resolved,UAT,2026-01-09,2026-01-15,False,Requirement
+BUG-004,REL-001,TC-024,User Account issue found during usability testing,User Account,Medium,Closed,QA,2026-01-20,2026-01-21,False,Requirement
+BUG-005,REL-001,TC-031,Authentication issue found during security testing,Authentication,Medium,Closed,QA,2026-01-18,2026-01-20,False,Test Data
+BUG-006,REL-001,TC-053,Payment issue found during api testing,Payment,Medium,Resolved,Production,2026-01-06,2026-01-07,False,Code
+BUG-007,REL-001,TC-064,Checkout issue found during usability testing,Checkout,Critical,Closed,QA,2026-01-24,2026-01-28,False,Configuration
+BUG-008,REL-002,TC-002,Product Catalog issue found during regression testing,Product Catalog,High,Resolved,QA,2026-02-16,2026-02-18,False,Configuration
+BUG-009,REL-002,TC-015,Cart issue found during security testing,Cart,Medium,Resolved,QA,2026-02-17,2026-02-28,False,Configuration
+BUG-010,REL-002,TC-048,User Account issue found during usability testing,User Account,Medium,Closed,QA,2026-02-11,2026-02-24,False,Requirement
+BUG-011,REL-002,TC-056,Product Catalog issue found during usability testing,Product Catalog,Low,Open,QA,2026-02-03,,False,Environment
+BUG-012,REL-002,TC-063,Cart issue found during security testing,Cart,Medium,Open,QA,2026-02-17,,False,Third-Party Integration
+BUG-013,REL-002,TC-072,User Account issue found during usability testing,User Account,Medium,Deferred,QA,2026-02-15,,False,Third-Party Integration
+BUG-014,REL-003,TC-007,Authentication issue found during security testing,Authentication,Low,Open,QA,2026-03-08,,False,Test Data
+BUG-015,REL-003,TC-036,User Account issue found during integration testing,User Account,Medium,In Progress,QA,2026-03-10,,False,Third-Party Integration
+BUG-016,REL-003,TC-063,Cart issue found during security testing,Cart,Critical,Open,QA,2026-03-16,,False,Environment
+BUG-017,REL-003,TC-064,Checkout issue found during usability testing,Checkout,Medium,Closed,QA,2026-03-04,2026-03-06,False,Environment
+BUG-018,REL-003,TC-069,Cart issue found during api testing,Cart,High,In Progress,QA,2026-03-07,,False,Requirement
+BUG-019,REL-004,TC-026,Product Catalog issue found during regression testing,Product Catalog,Medium,Closed,QA,2026-04-26,2026-04-30,False,Test Data
+BUG-020,REL-004,TC-044,Product Catalog issue found during integration testing,Product Catalog,Critical,Closed,QA,2026-04-23,2026-05-07,False,Test Data
+BUG-021,REL-004,TC-062,Product Catalog issue found during end-to-end testing,Product Catalog,High,Closed,QA,2026-04-11,2026-04-13,False,Third-Party Integration
+BUG-022,REL-005,TC-009,Cart issue found during functional testing,Cart,Low,Resolved,QA,2026-05-16,2026-05-18,False,Code
+BUG-023,REL-005,TC-049,Authentication issue found during functional testing,Authentication,Medium,Open,QA,2026-05-10,,False,Code
+BUG-024,REL-006,TC-014,Product Catalog issue found during end-to-end testing,Product Catalog,High,Resolved,QA,2026-06-13,2026-06-21,False,Configuration
+BUG-025,REL-006,TC-052,Checkout issue found during integration testing,Checkout,Low,Resolved,QA,2026-06-15,2026-06-23,False,Test Data
