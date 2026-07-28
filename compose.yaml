@@ -1,0 +1,62 @@
+name: qa-analytics-observability
+
+services:
+  qa-metrics-exporter:
+    build:
+      context: .
+      dockerfile: Dockerfile.exporter
+    image: qa-metrics-exporter:local
+    container_name: qa-metrics-exporter
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data/raw:/app/data/raw:ro
+    networks:
+      - qa-observability
+
+  prometheus:
+    image: prom/prometheus:v3.13.1
+    container_name: qa-prometheus
+    restart: unless-stopped
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+      - "--web.enable-lifecycle"
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./config/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus-data:/prometheus
+    depends_on:
+      qa-metrics-exporter:
+        condition: service_healthy
+    networks:
+      - qa-observability
+
+  grafana:
+    image: grafana/grafana:13.1.1
+    container_name: qa-grafana
+    restart: unless-stopped
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:-qaadmin}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:?Set GRAFANA_ADMIN_PASSWORD in the local .env file}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./config/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./dashboards/grafana:/var/lib/grafana/dashboards:ro
+    depends_on:
+      - prometheus
+    networks:
+      - qa-observability
+
+volumes:
+  prometheus-data:
+  grafana-data:
+
+networks:
+  qa-observability:
+    driver: bridge
