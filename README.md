@@ -1,53 +1,79 @@
 # QA Analytics and Observability
 
-A QA portfolio project demonstrating software-quality data generation, validation, historical reporting, release-risk analysis, and planned live test observability.
+A professional QA portfolio project demonstrating software-quality data generation, validation, historical analytics, release-risk assessment, and live test observability.
 
-The project uses synthetic QA data to model test executions, defects, automation coverage, flaky tests, and release-readiness indicators without exposing confidential production information.
+The project uses deterministic synthetic QA data to model releases, test cases, executions, defects, automation coverage, flaky tests, and release-readiness indicators without exposing confidential production information.
 
-## Current Implementation
+## Project Highlights
 
-The following components are implemented and verified:
+- Synthetic QA dataset generation with Python
+- Data-quality validation and automated tests with pytest
+- Historical QA analytics with Power BI and DAX
+- Live QA metrics exposed through a Python Prometheus exporter
+- Prometheus time-series collection and target monitoring
+- Provisioned Grafana datasource and dashboard-as-code
+- Dockerized local observability stack
+- Secure local credential handling with `.env`
+- Documented metric definitions, architecture, validation, and troubleshooting
 
-- Deterministic synthetic QA data generation with Python
-- Release, test-case, test-execution, and defect datasets
-- Dataset validation for schema, relationships, dates, and business rules
-- Automated data-quality tests with pytest
-- Historical QA analytics dashboard built with Power BI
-- Documented DAX metrics and release-readiness calculation
-- PDF export of the completed Power BI report
+## Architecture
 
-Grafana, Prometheus, Docker Compose, and GitHub Actions are planned as the next project milestones.
+```text
+                    Synthetic QA Data
+                            |
+                +-----------+-----------+
+                |                       |
+                v                       v
+          CSV Historical Data     Python Metrics Exporter
+                |                       |
+                v                       v
+             Power BI               Prometheus
+                |                       |
+                v                       v
+      Historical QA Analytics      Grafana
+                                        |
+                                        v
+                              Live QA Observability
+```
 
 ## Technology Stack
 
-### Implemented
+### Data and Testing
 
 - Python 3
 - pandas
 - pytest
+- prometheus-client
+
+### Analytics and Observability
+
 - Power BI Desktop
 - DAX
+- Prometheus
+- Grafana
+
+### DevOps and Tooling
+
+- Docker
+- Docker Compose
 - Git
 - PowerShell
 
 ### Planned
 
-- Grafana
-- Prometheus
-- Docker
-- Docker Compose
 - GitHub Actions
 
 ## QA Metrics
 
-The project currently analyses:
+The project calculates and visualizes:
 
 - Test pass rate
 - Test failure rate
+- Test execution status
+- Average execution duration
 - Automation coverage
 - Automation gap
 - Flaky-test rate
-- Average test execution duration
 - Defects by severity
 - Defects by status
 - Defects by module
@@ -57,21 +83,51 @@ The project currently analyses:
 - Open critical defects
 - Release-readiness score
 
+## Verified Dataset
+
+The deterministic dataset contains:
+
+| Dataset | Rows |
+|---|---:|
+| Releases | 6 |
+| Test cases | 72 |
+| Test executions | 432 |
+| Defects | 25 |
+
+## Verified Results
+
+| Metric | Result |
+|---|---:|
+| Data-validation errors | 0 |
+| Automated tests | 19 passed |
+| Total test executions | 432 |
+| Test pass rate | 91.45% |
+| Automation coverage | 83.33% |
+| Automation gap | 9 |
+| Flaky-test rate | 3.70% |
+| Average test duration | 13.09 seconds |
+| Total defects | 25 |
+| Open critical defects | 1 |
+| Defect leakage | 4.00% |
+| Release-readiness score | 87.09 |
+
 ## Power BI Dashboard
 
-The Power BI report is available at:
+The Power BI report provides historical analysis across releases, modules, browsers, environments, test executions, automation coverage, and defects.
+
+### Report File
 
 ```text
 dashboards/power-bi/qa-analytics-dashboard.pbix
 ```
 
-A static PDF export is available at:
+### PDF Export
 
 ```text
 exports/power-bi/qa-analytics-dashboard.pdf
 ```
 
-Detailed dashboard documentation is available at:
+### Documentation
 
 ```text
 docs/power-bi-dashboard.md
@@ -79,17 +135,66 @@ docs/power-bi-dashboard.md
 
 ### Report Pages
 
-The report contains five pages:
-
 1. Executive QA Summary
 2. Test Execution Analysis
 3. Defect Analysis
 4. Automation Coverage
 5. Release Readiness
 
-### Release-Readiness Model
+## Grafana QA Observability
 
-The portfolio-defined release-readiness score uses the following weighted components:
+The live observability stack follows this flow:
+
+```text
+QA CSV Data
+    |
+    v
+Python Metrics Exporter
+    |
+    v
+Prometheus
+    |
+    v
+Grafana
+```
+
+### Dashboard Preview
+
+![QA Test Observability Grafana dashboard](exports/grafana/qa-test-observability-dashboard.png)
+
+### Dashboard File
+
+```text
+dashboards/grafana/qa-observability-dashboard.json
+```
+
+### Documentation
+
+```text
+docs/grafana-observability.md
+```
+
+### Dashboard Panels
+
+The provisioned dashboard contains 13 panels covering:
+
+- Test pass rate
+- Automation coverage
+- Flaky-test rate
+- Open critical defects
+- Defect leakage
+- Release readiness
+- Executions by status
+- Defects by severity
+- Defects by module
+- Pass rate by release
+- Readiness by release
+- Duration by module
+- Automation coverage by module
+
+## Release-Readiness Model
+
+The portfolio-defined release-readiness score has a maximum value of 100.
 
 | Component | Weight |
 |---|---:|
@@ -99,32 +204,7 @@ The portfolio-defined release-readiness score uses the following weighted compon
 | Defect leakage control | 15 |
 | Open critical defects | 10 |
 
-The readiness score is a documented project assumption rather than a universal industry standard.
-
-## Verified Dataset
-
-The generated dataset contains:
-
-| Dataset | Rows |
-|---|---:|
-| Releases | 6 |
-| Test cases | 72 |
-| Test executions | 432 |
-| Defects | 25 |
-
-Verified results:
-
-| Metric | Result |
-|---|---:|
-| Data validation errors | 0 |
-| Automated tests | 9 passed |
-| Test pass rate | 91.45% |
-| Automation coverage | 83.33% |
-| Flaky-test rate | 3.70% |
-| Total defects | 25 |
-| Open critical defects | 1 |
-| Defect leakage | 4.00% |
-| Release-readiness score | 87.09 |
+This score is a documented project assumption. It does not replace business-risk review, stakeholder approval, unresolved-defect assessment, or complete test-coverage analysis.
 
 ## Project Structure
 
@@ -133,11 +213,17 @@ qa-analytics-observability/
 ├── .github/
 │   └── workflows/
 ├── config/
-│   └── grafana/
-│       ├── dashboards/
-│       └── provisioning/
+│   ├── grafana/
+│   │   └── provisioning/
+│   │       ├── dashboards/
+│   │       │   └── dashboard.yml
+│   │       └── datasources/
+│   │           └── prometheus.yml
+│   └── prometheus/
+│       └── prometheus.yml
 ├── dashboards/
 │   ├── grafana/
+│   │   └── qa-observability-dashboard.json
 │   └── power-bi/
 │       └── qa-analytics-dashboard.pbix
 ├── data/
@@ -150,18 +236,25 @@ qa-analytics-observability/
 ├── docs/
 │   ├── architecture.md
 │   ├── data-dictionary.md
+│   ├── grafana-observability.md
 │   ├── metrics-catalog.md
 │   └── power-bi-dashboard.md
 ├── exports/
 │   ├── grafana/
+│   │   └── qa-test-observability-dashboard.png
 │   └── power-bi/
 │       └── qa-analytics-dashboard.pdf
 ├── scripts/
 │   ├── generate_qa_data.py
+│   ├── qa_metrics_exporter.py
 │   └── validate_qa_data.py
 ├── tests/
-│   └── test_data_generation.py
+│   ├── test_data_generation.py
+│   └── test_qa_metrics_exporter.py
+├── .env.example
 ├── .gitignore
+├── compose.yaml
+├── Dockerfile.exporter
 ├── README.md
 └── requirements.txt
 ```
@@ -170,28 +263,30 @@ qa-analytics-observability/
 
 - Python 3
 - Power BI Desktop
+- Docker Desktop
+- Docker Compose
 - Git
 - PowerShell
 
-Docker Desktop will be required for the planned Grafana and Prometheus implementation.
+Docker Desktop must be running with the Linux container engine before starting the observability stack.
 
 ## Local Setup
 
-Run the following commands from the repository root.
+Run all commands from the repository root.
 
-### Create the virtual environment
+### Create a Virtual Environment
 
 ```powershell
 python -m venv .venv
 ```
 
-### Activate the virtual environment
+### Activate the Virtual Environment
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-### Install dependencies
+### Install Dependencies
 
 ```powershell
 python -m pip install -r requirements.txt
@@ -203,7 +298,7 @@ python -m pip install -r requirements.txt
 python scripts\generate_qa_data.py
 ```
 
-The command creates deterministic CSV datasets under:
+Generated datasets are written to:
 
 ```text
 data/raw/
@@ -215,7 +310,7 @@ data/raw/
 python scripts\validate_qa_data.py
 ```
 
-Expected successful result:
+Expected result:
 
 ```text
 QA data validation completed successfully.
@@ -228,7 +323,24 @@ Validation errors: 0
 python -m pytest
 ```
 
-The test suite validates dataset creation, required columns, row counts, identifiers, relationships, dates, and business rules.
+Verified result:
+
+```text
+19 passed
+```
+
+The test suite validates:
+
+- Expected dataset sizes
+- Unique identifiers
+- Dataset relationships
+- Test creation and execution dates
+- Automation eligibility
+- Supported status and browser values
+- Metric formulas
+- Release-readiness calculations
+- Missing files and columns
+- Prometheus metric publication
 
 ## Open the Power BI Report
 
@@ -236,36 +348,172 @@ The test suite validates dataset creation, required columns, row counts, identif
 Start-Process "dashboards\power-bi\qa-analytics-dashboard.pbix"
 ```
 
-Select **Refresh** in Power BI Desktop after regenerating the CSV files.
+Select **Refresh** after regenerating the CSV files.
 
-The local repository path should remain consistent because the Power BI model currently imports local CSV sources.
+The Power BI model currently imports local CSV paths, so the repository location should remain consistent.
+
+## Configure Grafana Credentials
+
+Create a local environment file:
+
+```powershell
+Copy-Item ".env.example" ".env"
+```
+
+Open the file:
+
+```powershell
+code ".env"
+```
+
+Replace the placeholder Grafana password with a strong private password.
+
+The `.env` file is ignored by Git and must not be committed.
+
+## Validate Docker Compose
+
+```powershell
+docker compose config --quiet
+```
+
+A successful validation produces no output.
+
+## Start the Observability Stack
+
+```powershell
+docker compose up --detach --build
+```
+
+The stack starts:
+
+- `qa-metrics-exporter`
+- `qa-prometheus`
+- `qa-grafana`
+
+## Check Container Status
+
+```powershell
+docker compose ps
+```
+
+Expected state:
+
+- Metrics exporter is running and healthy
+- Prometheus is running
+- Grafana is running
+
+## Service URLs
+
+| Service | URL |
+|---|---|
+| Grafana | `http://localhost:3000` |
+| Grafana dashboard | `http://localhost:3000/d/qa-test-observability` |
+| Prometheus | `http://localhost:9090` |
+| Exporter metrics | `http://localhost:8000/metrics` |
+
+## Operational Validation
+
+### Exporter Health
+
+```powershell
+(Invoke-WebRequest "http://localhost:8000/metrics").StatusCode
+```
+
+Verified result:
+
+```text
+200
+```
+
+### Prometheus Target Health
+
+```powershell
+$response = Invoke-RestMethod "http://localhost:9090/api/v1/targets"
+
+$response.data.activeTargets |
+    Select-Object @{
+        Name = "Job"
+        Expression = { $_.labels.job }
+    }, Health, ScrapeUrl, LastError
+```
+
+Verified target:
+
+```text
+Job: qa-metrics-exporter
+Health: up
+Scrape URL: http://qa-metrics-exporter:8000/metrics
+```
+
+### Grafana Health
+
+```powershell
+Invoke-RestMethod "http://localhost:3000/api/health"
+```
+
+Verified result:
+
+```text
+database: ok
+version: 13.1.1
+```
+
+### Container Logs
+
+```powershell
+docker compose logs --no-color --tail 50
+```
+
+## Stop the Stack
+
+```powershell
+docker compose down
+```
+
+This removes the containers and project network while preserving the named Grafana and Prometheus volumes.
+
+## Remove Stored Data
+
+```powershell
+docker compose down --volumes
+```
+
+This command also deletes the named volumes and their stored data. Use it only when an intentional environment reset is required.
 
 ## Documentation
 
 - `docs/architecture.md` — analytics and observability architecture
 - `docs/data-dictionary.md` — dataset columns and relationships
-- `docs/metrics-catalog.md` — QA metric definitions
-- `docs/power-bi-dashboard.md` — Power BI model, measures, report pages, and limitations
-
-## Limitations
-
-- All datasets are synthetic and intended for portfolio demonstration.
-- Automation coverage represents the current test-case inventory rather than a historical snapshot for every release.
-- The release-readiness score uses project-defined weights.
-- The Power BI model currently uses local CSV file paths.
-- Grafana, Prometheus, Docker Compose, and GitHub Actions are not yet implemented.
-
-## Planned Improvements
-
-- Expose QA metrics through a Prometheus-compatible Python service
-- Provision Prometheus and Grafana with Docker Compose
-- Build live Grafana test-observability dashboards
-- Add automated validation through GitHub Actions
-- Export and document Grafana dashboards
-- Add dashboard screenshots for repository presentation
+- `docs/metrics-catalog.md` — QA metric definitions and thresholds
+- `docs/power-bi-dashboard.md` — Power BI model, measures, pages, and limitations
+- `docs/grafana-observability.md` — exporter, Prometheus, Grafana, Docker, validation, and troubleshooting
 
 ## Security
 
-This project uses synthetic data only.
+- Only synthetic QA data is used.
+- Grafana credentials are stored in the ignored local `.env` file.
+- `.env.example` contains placeholders only.
+- Passwords, tokens, API keys, private URLs, and confidential datasets must not be committed.
+- The metrics exporter runs as a non-root container user.
+- Grafana provisioning files and dashboard JSON are version controlled.
 
-Passwords, tokens, API keys, private URLs, confidential datasets, and local environment files must not be committed.
+## Limitations
+
+- The datasets are synthetic and intended for portfolio demonstration.
+- The Power BI model uses local CSV paths.
+- Automation coverage represents the current test inventory rather than a historical release snapshot.
+- The release-readiness score uses project-defined weights.
+- The exporter reads CSV files instead of a production CI/CD or test-management API.
+- No Grafana alert rules or external notifications are currently configured.
+- Prometheus history depends on the local named volume.
+- GitHub Actions is not yet implemented.
+
+## Planned Improvements
+
+- Add GitHub Actions validation
+- Add Grafana alert rules and notifications
+- Publish metrics from an automated test pipeline
+- Add Grafana browser, module, and environment filters
+- Add Docker container vulnerability scanning
+- Add HTTP integration tests for the running exporter
+- Add documented backup and recovery procedures
