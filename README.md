@@ -11,6 +11,7 @@ The project uses deterministic synthetic QA data to model releases, test cases, 
 - Synthetic QA dataset generation with Python
 - Data-quality validation and automated tests with pytest
 - GitHub Actions validation for Python, datasets, configuration, containers, and service health
+- Protected `main` branch with required CI checks
 - Historical QA analytics with Power BI and DAX
 - Live QA metrics exposed through a Python Prometheus exporter
 - Prometheus time-series collection and target monitoring
@@ -386,6 +387,20 @@ The second job runs after the Python and data checks pass. It:
 - Concurrent runs for the same workflow reference are cancelled when superseded.
 - Each job has a timeout to prevent stalled executions.
 
+### Main Branch Protection
+
+The `main` branch is protected with the following controls:
+
+- `Python and Data Validation` must pass before merging.
+- `Observability Stack Validation` must pass before merging.
+- Pull-request branches must be current with `main`.
+- Protection rules also apply to repository administrators.
+- Pull-request conversations must be resolved before merging.
+- Force pushes to `main` are disabled.
+- Deletion of `main` is disabled.
+
+The repository does not require approval from another reviewer because it is maintained as a solo portfolio project.
+
 ## Open the Power BI Report
 
 ```powershell
@@ -541,6 +556,8 @@ This command also deletes the named volumes and their stored data. Use it only w
 - The metrics exporter runs as a non-root container user.
 - Grafana provisioning files and dashboard JSON are version controlled.
 - GitHub Actions uses read-only repository permissions and does not require committed secrets.
+- The protected `main` branch requires both CI jobs to pass before merging.
+- Force pushes and deletion of `main` are disabled.
 
 ## Limitations
 
@@ -554,7 +571,6 @@ This command also deletes the named volumes and their stored data. Use it only w
 
 ## Planned Improvements
 
-- Configure branch protection to require passing CI checks
 - Add Grafana alert rules and notifications
 - Publish metrics from an automated test pipeline
 - Add Grafana browser, module, and environment filters
