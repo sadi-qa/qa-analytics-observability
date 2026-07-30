@@ -4,10 +4,13 @@ A professional QA portfolio project demonstrating software-quality data generati
 
 The project uses deterministic synthetic QA data to model releases, test cases, executions, defects, automation coverage, flaky tests, and release-readiness indicators without exposing confidential production information.
 
+[![QA Validation](https://github.com/sadi-qa/qa-analytics-observability/actions/workflows/qa-validation.yml/badge.svg)](https://github.com/sadi-qa/qa-analytics-observability/actions/workflows/qa-validation.yml)
+
 ## Project Highlights
 
 - Synthetic QA dataset generation with Python
 - Data-quality validation and automated tests with pytest
+- GitHub Actions validation for Python, datasets, configuration, containers, and service health
 - Historical QA analytics with Power BI and DAX
 - Live QA metrics exposed through a Python Prometheus exporter
 - Prometheus time-series collection and target monitoring
@@ -56,12 +59,9 @@ The project uses deterministic synthetic QA data to model releases, test cases, 
 
 - Docker
 - Docker Compose
+- GitHub Actions
 - Git
 - PowerShell
-
-### Planned
-
-- GitHub Actions
 
 ## QA Metrics
 
@@ -100,6 +100,7 @@ The deterministic dataset contains:
 |---|---:|
 | Data-validation errors | 0 |
 | Automated tests | 19 passed |
+| GitHub Actions jobs | 2 passed |
 | Total test executions | 432 |
 | Test pass rate | 91.45% |
 | Automation coverage | 83.33% |
@@ -212,6 +213,7 @@ This score is a documented project assumption. It does not replace business-risk
 qa-analytics-observability/
 ├── .github/
 │   └── workflows/
+│       └── qa-validation.yml
 ├── config/
 │   ├── grafana/
 │   │   └── provisioning/
@@ -341,6 +343,48 @@ The test suite validates:
 - Release-readiness calculations
 - Missing files and columns
 - Prometheus metric publication
+
+## CI/CD Validation
+
+The GitHub Actions workflow runs automatically for pushes to `main`, pull requests targeting `main`, and manual workflow dispatches.
+
+### Workflow File
+
+```text
+.github/workflows/qa-validation.yml
+```
+
+### Python and Data Validation
+
+The first job:
+
+- Installs the pinned Python dependencies
+- Compiles the Python scripts to catch syntax errors
+- Validates the tracked QA datasets
+- Runs the complete pytest suite
+
+### Observability Stack Validation
+
+The second job runs after the Python and data checks pass. It:
+
+- Validates the Grafana dashboard JSON
+- Validates the Docker Compose configuration
+- Validates the Prometheus configuration with `promtool`
+- Builds the QA metrics exporter image
+- Confirms that the exporter runs as a non-root user
+- Starts the Docker Compose observability stack
+- Verifies exporter, Prometheus, and Grafana health
+- Confirms that expected QA metrics are published
+- Captures container status and logs when validation fails
+- Removes CI containers, networks, and volumes after execution
+
+### Workflow Security and Reliability
+
+- Repository permissions are restricted to read-only contents.
+- No repository secrets are required.
+- The Grafana credential used by CI is an explicit non-production validation value.
+- Concurrent runs for the same workflow reference are cancelled when superseded.
+- Each job has a timeout to prevent stalled executions.
 
 ## Open the Power BI Report
 
@@ -496,6 +540,7 @@ This command also deletes the named volumes and their stored data. Use it only w
 - Passwords, tokens, API keys, private URLs, and confidential datasets must not be committed.
 - The metrics exporter runs as a non-root container user.
 - Grafana provisioning files and dashboard JSON are version controlled.
+- GitHub Actions uses read-only repository permissions and does not require committed secrets.
 
 ## Limitations
 
@@ -506,11 +551,10 @@ This command also deletes the named volumes and their stored data. Use it only w
 - The exporter reads CSV files instead of a production CI/CD or test-management API.
 - No Grafana alert rules or external notifications are currently configured.
 - Prometheus history depends on the local named volume.
-- GitHub Actions is not yet implemented.
 
 ## Planned Improvements
 
-- Add GitHub Actions validation
+- Configure branch protection to require passing CI checks
 - Add Grafana alert rules and notifications
 - Publish metrics from an automated test pipeline
 - Add Grafana browser, module, and environment filters
