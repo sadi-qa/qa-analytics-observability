@@ -100,7 +100,7 @@ The deterministic dataset contains:
 | Metric | Result |
 |---|---:|
 | Data-validation errors | 0 |
-| Automated tests | 19 passed |
+| Automated tests | 27 passed |
 | GitHub Actions jobs | 2 passed |
 | Total test executions | 432 |
 | Test pass rate | 91.45% |
@@ -253,6 +253,7 @@ qa-analytics-observability/
 │   └── validate_qa_data.py
 ├── tests/
 │   ├── test_data_generation.py
+│   ├── test_qa_data_validation.py
 │   └── test_qa_metrics_exporter.py
 ├── .env.example
 ├── .gitignore
@@ -329,7 +330,7 @@ python -m pytest
 Verified result:
 
 ```text
-19 passed
+27 passed
 ```
 
 The test suite validates:
