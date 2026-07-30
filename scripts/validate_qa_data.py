@@ -642,15 +642,31 @@ def validate_foreign_keys(
 ) -> None:
     """Verify child records reference existing parent records."""
 
-    required_datasets = {
-        "releases",
-        "test_cases",
-        "test_executions",
-        "defects",
+    required_columns = {
+        "releases": {
+            "release_id",
+        },
+        "test_cases": {
+            "test_case_id",
+        },
+        "test_executions": {
+            "release_id",
+            "test_case_id",
+        },
+        "defects": {
+            "release_id",
+            "linked_test_case_id",
+        },
     }
 
-    if not required_datasets.issubset(datasets):
-        return
+    for dataset_name, columns in required_columns.items():
+        dataframe = datasets.get(dataset_name)
+
+        if dataframe is None:
+            return
+
+        if not columns.issubset(dataframe.columns):
+            return
 
     releases = datasets["releases"]
     test_cases = datasets["test_cases"]
@@ -790,7 +806,7 @@ def validate_execution_chronology(
     ].copy()
 
     execution_dates = executions[
-        ["execution_id", "test_case_id", "execution_date"]
+        ["test_case_id", "execution_date"]
     ].copy()
 
     case_dates["created_date"] = pd.to_datetime(

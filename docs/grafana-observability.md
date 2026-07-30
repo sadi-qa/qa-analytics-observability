@@ -408,31 +408,33 @@ The exporter, Prometheus queries, Grafana dashboard, and Power BI report display
 
 ## Automated Test Coverage
 
-Exporter tests are stored in:
+The complete project test suite is organized across:
 
 ```text
+tests/test_data_generation.py
+tests/test_qa_data_validation.py
 tests/test_qa_metrics_exporter.py
 ```
 
 The tests validate:
 
-- Safe ratio calculation
-- Division-by-zero handling
-- Perfect release-readiness scoring
-- Critical-defect readiness penalties
+- Synthetic dataset sizes and identifier uniqueness
+- Dataset relationships and execution chronology
+- Automation eligibility and supported execution values
+- Missing schema and relationship-column handling
+- Unknown foreign-key reference reporting
+- Safe ratio calculation and division-by-zero handling
+- Release-readiness scoring and critical-defect penalties
 - Traceability between source data and calculated metrics
 - Release-level metric creation
 - Required CSV file loading
-- Missing dataset handling
-- Missing required-column handling
+- Missing dataset and required-column handling
 - Prometheus metric publication
-
-The complete project test suite also includes the synthetic data-generation tests.
 
 Verified test result:
 
 ```text
-19 passed
+27 passed
 ```
 
 ## Prerequisites
@@ -519,7 +521,7 @@ A successful syntax check produces no output.
 Verified result:
 
 ```text
-19 passed
+27 passed
 ```
 
 ### Validate Docker Compose
